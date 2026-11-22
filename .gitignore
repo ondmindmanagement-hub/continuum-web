@@ -1,0 +1,11 @@
+# Private project evidence, funding positioning and personal screenshots
+*_PRIVATE_*.md
+*_PRIVATE.*
+*QA*_PRIVATE*.png
+MOBILE_QA_20261122_PRIVATE.png
+FUNDING_POSITIONING_PRIVATE_20261122.md
+.DS_Store
+node_modules/
+*.log
+.env
+.env.*

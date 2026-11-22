@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071014">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Continuum — a coordinated workspace for continuous, parallel work with visible human oversight. Explore a real interactive, synthetic browser demo.">
+  <title>Continuum — Make progress continuous</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">Skip to interactive demo</a>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="Continuum home"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><span>continuum<small>by Unfire</small></span></a>
+      <nav aria-label="Main navigation"><a href="#how">The idea</a><a href="#workspace">Try the demo</a><a href="#proof">Evidence</a><a class="nav-contact" href="mailto:hello@unfire.technology?subject=Continuum%20enquiry">Get in touch</a></nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy"><div class="eyebrow"><span class="pulse" aria-hidden="true"></span> Coordination, without the chaos</div>
+        <h1 id="hero-title">Make progress<br><em>continuous.</em></h1>
+        <p>Organize complex work, move independent processes forward in parallel, and keep every important decision visible to a human.</p>
+        <div class="hero-actions"><a href="#workspace" class="btn btn-primary">Try the interactive demo <span aria-hidden="true">↗</span></a><a class="btn btn-quiet" href="#proof">Explore what is verified</a></div>
+        <div class="hero-foot">Research-stage macOS workspace · Private engine software · No account needed to try this sample</div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of three coordinated streams">
+        <div class="visual-grid" aria-hidden="true"></div>
+        <div class="visual-head"><span class="visual-logo"><span class="tiny-mark">◈</span> CONTINUUM</span><span class="visual-live">● RESEARCH PREVIEW</span></div>
+        <div class="signal"><div class="signal-badge">01</div><div><strong>Development & quality</strong><span>Assess, verify, refine</span></div><div class="waves w1"><b></b><b></b><b></b></div></div>
+        <div class="signal"><div class="signal-badge">02</div><div><strong>Projects & release</strong><span>Coordinate, prepare, stage</span></div><div class="waves w2"><b></b><b></b><b></b></div></div>
+        <div class="signal"><div class="signal-badge">03</div><div><strong>Coordination & resources</strong><span>Schedule, monitor, report</span></div><div class="waves w3"><b></b><b></b><b></b></div></div>
+        <div class="visual-bottom"><span>THREE STREAMS</span><span>ONE CLEAR VIEW</span></div>
+      </div>
+    </section>
+    <section id="how" class="principles"><div class="shell">
+      <div class="section-intro"><span class="kicker">01 / Why Continuum</span><h2>One system.<br>Many moving parts.</h2><p>Different work needs different specialists. Continuum brings their progress together, making handoffs and human oversight easier to understand.</p></div>
+      <div class="feature-grid">
+        <article><span class="feature-number">01</span><h3>Work in parallel</h3><p>Separate workstreams help different kinds of processes advance without forcing everything into a single queue.</p></article>
+        <article><span class="feature-number">02</span><h3>See what matters</h3><p>A shared overview makes responsibilities, changes, reviews and unfinished work visible.</p></article>
+        <article><span class="feature-number">03</span><h3>Keep people in control</h3><p>Human decisions remain explicit. A proposed action is not the same thing as permission to execute it.</p></article>
+      </div></div>
+    </section>
+    <section id="workspace" class="work-section"><div class="shell">
+      <div class="section-intro compact"><span class="kicker">02 / Functional browser experience</span><h2>Don't just read about it.<br><em>Try a process.</em></h2><p>Create fictional work, assign a stream, advance the workflow and review gated decisions. The interaction is real; the work items are synthetic and never reach a private computer or customer system.</p></div>
+      <div class="demo" aria-label="Interactive Continuum simulation">
+        <div class="demo-head"><div><span class="demo-eyebrow">LIVE INTERACTION · SYNTHETIC DATA ONLY</span><h3>Coordination studio</h3></div><div class="demo-head-right"><span class="demo-chip">● Browser-only</span><button type="button" id="reset" class="link-button">Reset sample</button></div></div>
+        <div class="stats" aria-live="polite"><div><span>Work items</span><strong id="total">0</strong></div><div><span>Running</span><strong id="active">0</strong></div><div><span>Needs review</span><strong id="reviews">0</strong></div><div><span>Completed</span><strong id="completed">0</strong></div></div>
+        <div class="demo-main">
+          <div class="demo-left"><div class="workspace-heading"><div><span class="micro">SIMULATION / THREE INDEPENDENT STREAMS</span><h4>Process board</h4></div><div class="board-controls"><button type="button" id="advance" class="btn btn-small btn-primary">Advance one cycle <span aria-hidden="true">↗</span></button><button type="button" id="pause" class="btn btn-small btn-secondary">Pause all</button></div></div>
+            <div class="engines" id="engines" aria-label="Current stream states"></div>
+            <div class="task-filters"><label for="filter">Show</label><select id="filter"><option value="all">All work</option><option value="running">In progress</option><option value="review">Awaiting review</option><option value="done">Completed</option><option value="blocked">Blocked</option></select><span id="counter" aria-live="polite"></span></div>
+            <ol id="tasks" class="tasks" aria-label="Synthetic workflow items"></ol><p class="empty" id="empty" hidden>No work matches this view.</p>
+          </div>
+          <div class="demo-right">
+            <div class="side-panel"><span class="micro">NEW WORK</span><h4>Start a process</h4><form id="new-task"><label for="task-name">What needs coordinating?</label><input id="task-name" name="task-name" type="text" maxlength="65" placeholder="e.g. Review next release" required autocomplete="off"><label for="task-engine">Choose a specialist stream</label><select name="task-engine" id="task-engine"><option value="development">Development & quality</option><option value="projects">Projects & release</option><option value="coordination">Coordination & resources</option></select><label class="checkline"><input name="task-review" type="checkbox" id="task-review" checked><span>Request human approval before completion</span></label><button class="btn btn-primary btn-full" type="submit">Add to workflow <span aria-hidden="true">+</span></button></form></div>
+            <div class="side-panel history"><div class="row-between"><span class="micro">ACTIVITY LOG</span><button type="button" id="export" class="link-button">Export JSON</button></div><p class="muted">Recorded inside this page, not sent to a server.</p><ul id="events" aria-label="Synthetic activity log"></ul></div>
+          </div>
+        </div>
+        <div class="demo-foot"><span><span class="foot-dot">●</span> All processing stays in your browser. Reset clears this session's sample.</span><span>Not a connection to Continuum's private macOS engines.</span></div>
+      </div>
+    </div></section>
+    <section id="proof" class="evidence shell"><div><span class="kicker">03 / Development & evidence</span><h2>Real research.<br>Clear boundaries.</h2></div><div class="evidence-text"><p>Continuum has an existing private macOS prototype with a local coordination index, specialist engine groups and human review controls under development. Those components are separate from this public-facing demonstration.</p><p><strong>What this website proves:</strong> a working, accessible browser-only workflow simulator, review decisions, progress tracking, export and reset. <strong>What it does not prove:</strong> a production cloud service, continuous remote AI execution, verified savings or certification.</p><div class="proof-chips"><span>Research-stage product</span><span>Fictional cases</span><span>No customer data</span><span>Zero mandatory paid APIs</span></div></div></section>
+    <section class="closing shell"><span class="kicker">Build a more coordinated future</span><h2>Less repetition.<br>More forward motion.</h2><a class="btn btn-primary" href="mailto:hello@unfire.technology?subject=Continuum%20pilot%20or%20funding%20enquiry">Discuss a pilot or research partnership <span aria-hidden="true">↗</span></a><p>Remote-first contact by email. Product readiness and eligibility subject to review.</p></section>
+  </main>
+  <footer class="footer"><div class="shell"><div><strong>continuum</strong><span>by Unfire</span></div><p>Research demonstration · © 2026 Omar Baró</p><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
